@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button {
+        background-color: #abeeec;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: red;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h3 {
+            color:aqua;
+            font-size: 24px;
+
+        }
+        p {
+            color: blue;
+            margin-bottom: 20px;
+        }
+        p1 {
+            color: rgb(29, 224, 32);
+        }
+        p2 {
+            color: rgb(30, 179, 104);
+        }
+        p3 {
+            color:rgb(17, 179, 249);
+        }
+        body {
+            background-image: url('https://images.unsplash.com/photo-1528459584353-5297db1a9c01?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBsYWlufGVufDB8fDB8fHww');
+        }
+        small {
+            color:rgb(106, 7, 24);
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <div class="container">
+        <h1>FOOD BLOG POSTS</h1>
+        {% for i in posts %}
+        <div class="post">
+            <h2>{{ i[1] }}</h2>
+            <p>{{ i[2] }}</p>
+            <h2>Types of chicken biryani</h2>
+            <p1>Hyderabadi Biryani<br>
+                Thalassery biryani<br>
+                Lucknowi biryani<br>
+                Chettinad biryani<br>
+                Sindhi biryani<br>
+                Bhatkali biryani<br>
+                Bombay Biryani<br>
+                Malabar biryani<br>
+                Andhra biryani<br>
+                Calicut biryani<br>
+                Vegetable biryani<br>
+                </p1>
+            <h2>process</h2>
+            <h3>Ingrediants:</h3>
+            <p2>1 cup boiled basmati rice<br>
+                1/2 teaspoon mint leaves<br>
+                salt as required<br>
+                2 teaspoon virgin olive oil<br>
+                3 green cardamom<br>
+                2 clove<br>
+                2 onion<br>
+                1 teaspoon turmeric<br>
+                1 tablespoon garlic paste<br>
+                1 cup hung curd<br>
+                2 tablespoon coriander leaves<br>
+                water as required<br>
+                1 tablespoon ghee<br>
+                600 gm chicken<br>
+                1 tablespoon garam masala powder<br>
+                1 teaspoon saffron<br>
+                1 tablespoon bay leaf<br>
+                1 black cardamom<br>
+                1 teaspoon cumin seeds<br>
+                4 green chillies<br>
+                1 tablespoon ginger paste<br>
+                1 teaspoon red chilli powder<br>
+                1/2 tablespoon ginger<br>
+                2 drops kewra<br></p2>
+            <h3>Making:</h3>
+            <p3>Step1:<br>Prepare saffron-kewra water and chop veggies.To make a delightful chicken biryani dish firstly soak saffron in water to prepare saffron water.Next, mix kewra drops in water and mix well to make kewra water. Set them aside for later usage. Now, chop the onion and coriander leaves and keep them aside.<br>
+                Step2:<br>Saute the onions.Meanwhile, heat olive oil in a deep bottomed pan. Once the oil is hot enough, add cumin seeds, bay leaf, green cardamom, black cardamom, cloves in it, and saute for about a minute. Then, add chopped onion to it and saute until pink. Now, add chicken into it with slit green chillies, turmeric, salt to taste, ginger-garlic paste, red chilli powder and green chilli paste. Mix well all the spices and cook for 2-3 minutes. Then, add hung curd into it and give a mix.<br>
+                Step3:<br>Cook biryani on low heat for 5-6 minutes.Turn the flame to medium again and add garam masala in it along with ginger julienned, coriander and mint leaves. Add kewra water, rose water and 1 tsp saffron water in it. Cook till the chicken is tender. Then add 1 cup cooked rice and spread evenly. Then add the remaining saffron water and pour ghee over it. You can now cook the dish without the lid or cover it with a lid to give a dum-effect due to the steam formation.<br>
+                Step4:<br>Serve hot chicken biryani with your favourite chutney or raita.Cook for 15-20 minutes with a closed lid and garnish with 1 tbsp fried onions and coriander leaves. Serve hot chicken biryani with raita of your choice. Enjoy!
+            </p3><br>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWSFWyRJ_JQON1IvSI1cEUdR2u80HIz8CaTc2lejmDkw&s"height="200",width="200"><br>
+            <small>posted at:{{ i[3] }}</small>
+        <form method ="POST" action="{{url_for('delete_post',id=i[0])}}" onsubmit="return confirm('Are you sure you want to delete this post?');">
+            <button class="button">Delete</button>
+        </form>
+        <form method ="GET" action="{{url_for('update_post',id=i[0])}}">
+            <button class="button">Edit</button>
+        </form>
+        </div>
+        {% endfor %}
+    </div>
+    </center>
+</body>
+</html>
